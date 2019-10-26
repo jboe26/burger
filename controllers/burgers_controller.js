@@ -15,13 +15,18 @@ router.get("/", function (req, res) {
         console.log(allBurgers);
         res.render("index", allBurgers);
     });
-});
+
 // Add new burger to the db.
 router.post("/api/burger", function (req, res) {
     burger.insertOne(["burger_name", "devoured"], [req.body.burger_name, req.body.devoured], function(result) {
+        var allBurgers = {
+            burger: result
+        };
         // Send back the ID of the new burger
         res.json({ id: result.insertId });
+        console.log(allBurgers);
     });
+});
 });
 // Set burger devoured status to true.
 router.put("/api/burger/:id", function(req, res) {
@@ -39,7 +44,7 @@ router.put("/api/burger/:id", function(req, res) {
     });
 });
 // Delete burger from db.
-router.delete("/api/burgers/:id", function(req, res) {
+router.delete("/api/burger/:id", function(req, res) {
     var condition = "id = " + req.params.id; 
     console.log("condition", condition);
 
