@@ -1,3 +1,5 @@
+
+
 $(function () {
     $(".create-form").on("submit", function (event) {
         event.preventDefault();
@@ -12,12 +14,12 @@ $(function () {
             type: "POST",
             data: newBurger
         }).then(function () {
-            console.log("Addec new burger");
+            console.log("Added new burger");
             location.reload();
         })
     });
 
-    $(".eatburger").on("click", function (event) {
+    $("#eatbutton").on("click", function (event) {
         event.preventDefault();
 
         var id = $(this).data("id");
@@ -33,7 +35,7 @@ $(function () {
         });
     });
 
-    $(".trashburger").on("click", function (event) {
+    $("#trashbutton").on("click", function (event) {
         event.preventDefault();
 
         var id = $(this).data("id");
